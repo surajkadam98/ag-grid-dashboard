@@ -4,7 +4,7 @@ import {
   DialogPanel,
   TransitionChild,
 } from "@headlessui/react";
-import { HomeIcon, UserIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, InformationCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps {
@@ -14,7 +14,7 @@ interface SidebarProps {
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: HomeIcon, current: false },
-  { name: "About", href: "/about", icon: UserIcon, current: false },
+  { name: "About", href: "/about", icon: InformationCircleIcon, current: false },
 ];
 
 function classNames(...classes: string[]) {

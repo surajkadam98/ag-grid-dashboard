@@ -306,7 +306,7 @@ export function EmployeeTable() {
     enableRangeSelection: true,
     enableCharts: true,
     pagination: true,
-    paginationPageSize: 20,
+    paginationPageSize: 10,
     paginationPageSizeSelector: [10, 20, 50, 100],
     suppressRowClickSelection: true,
     rowSelection: 'multiple' as const,

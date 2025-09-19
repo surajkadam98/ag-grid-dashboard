@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    height: 100%;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #F8FAFC;
+    color: #0F172A;
+  }
+
+  body.dark {
+    background-color: #0F172A;
+    color: #F8FAFC;
+  }
+
+  #root {
+    height: 100%;
+  }
+}
+
+/* Clean AG Grid Styling */
+.ag-theme-alpine {
+  --ag-background-color: #ffffff;
+  --ag-foreground-color: #374151;
+  --ag-border-color: #e5e7eb;
+  --ag-header-background-color: #f9fafb;
+  --ag-header-foreground-color: #111827;
+  --ag-odd-row-background-color: #ffffff;
+  --ag-even-row-background-color: #ffffff;
+  --ag-hover-color: #f3f4f6;
+  --ag-selected-row-background-color: #e0e7ff;
+  --ag-range-selection-background-color: #e0e7ff;
+  --ag-input-border-color: #d1d5db;
+  --ag-input-focus-border-color: #4f46e5;
+  --ag-font-family: ui-sans-serif, system-ui, sans-serif;
+  --ag-font-size: 14px;
+  --ag-header-height: 40px;
+  --ag-row-height: 40px;
+}

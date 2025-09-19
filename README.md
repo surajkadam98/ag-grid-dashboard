@@ -1,3 +1,12 @@
+## Screenshots
+
+Here are some previews of the project:
+### Dashboard Page
+<img width="1470" height="798" alt="Screenshot 2025-09-19 at 9 10 19 PM" src="https://github.com/user-attachments/assets/689bb7d4-58b7-4e8c-8894-064bcaaea1af" />
+
+### Data Grid Example
+<img width="1243" height="542" alt="Screenshot 2025-09-19 at 9 12 34 PM" src="https://github.com/user-attachments/assets/468e38d1-001c-4aee-97eb-ca7953655b36" />
+
 
 ## Tech Stack
 

@@ -1,11 +1,55 @@
 import { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-import type { ColDef, GridReadyEvent } from 'ag-grid-community';
+import type { ColDef } from 'ag-grid-community';
 import type { Employee } from '../../@types/employee';
 import employeeData from '../../@config/employees.json';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
+
+// Custom CSS for pagination footer
+const customStyles = `
+  .ag-theme-quartz .ag-paging-panel {
+    min-height: 60px !important;
+    padding: 12px 16px !important;
+    border-top: 1px solid #e5e7eb !important;
+    background-color: #f9fafb !important;
+  }
+
+  .ag-theme-quartz .ag-paging-panel .ag-paging-button {
+    padding: 8px 12px !important;
+    margin: 0 4px !important;
+    border-radius: 6px !important;
+    border: 1px solid #d1d5db !important;
+    background-color: white !important;
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+
+  .ag-theme-quartz .ag-paging-panel .ag-paging-button:hover {
+    background-color: #f3f4f6 !important;
+    border-color: #9ca3af !important;
+  }
+
+  .ag-theme-quartz .ag-paging-panel .ag-paging-button.ag-disabled {
+    background-color: #f9fafb !important;
+    color: #9ca3af !important;
+    border-color: #e5e7eb !important;
+  }
+
+  .ag-theme-quartz .ag-paging-panel .ag-paging-description {
+    font-size: 14px !important;
+    color: #6b7280 !important;
+    font-weight: 500 !important;
+  }
+
+  .ag-theme-quartz .ag-paging-panel .ag-paging-page-size-select {
+    padding: 6px 8px !important;
+    border-radius: 4px !important;
+    border: 1px solid #d1d5db !important;
+    background-color: white !important;
+  }
+`;
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -16,7 +60,8 @@ export function EmployeeTable() {
     {
       field: 'id',
       headerName: 'ID',
-      width: 80,
+      width: 100,
+      minWidth: 100,
       checkboxSelection: true,
       headerCheckboxSelection: true,
       pinned: 'left',
@@ -26,7 +71,8 @@ export function EmployeeTable() {
       headerName: 'First Name',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 140,
+      width: 160,
+      minWidth: 160,
       pinned: 'left',
     },
     {
@@ -34,7 +80,8 @@ export function EmployeeTable() {
       headerName: 'Last Name',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 140,
+      width: 160,
+      minWidth: 160,
       pinned: 'left',
     },
     {
@@ -42,7 +89,8 @@ export function EmployeeTable() {
       headerName: 'Email',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 220,
+      width: 280,
+      minWidth: 280,
       cellRenderer: (params: { value: string }) => (
         <a
           href={`mailto:${params.value}`}
@@ -57,7 +105,8 @@ export function EmployeeTable() {
       headerName: 'Department',
       filter: 'agSetColumnFilter',
       floatingFilter: true,
-      width: 140,
+      width: 180,
+      minWidth: 180,
       cellRenderer: (params: { value: string }) => (
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
           {params.value}
@@ -69,7 +118,8 @@ export function EmployeeTable() {
       headerName: 'Position',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 180,
+      width: 220,
+      minWidth: 220,
       cellRenderer: (params: { value: string }) => (
         <span className="font-medium text-gray-900">{params.value}</span>
       ),
@@ -79,7 +129,8 @@ export function EmployeeTable() {
       headerName: 'Salary',
       filter: 'agNumberColumnFilter',
       floatingFilter: true,
-      width: 120,
+      width: 140,
+      minWidth: 140,
       valueFormatter: (params) => `$${params.value?.toLocaleString()}`,
       cellRenderer: (params: { value: number }) => (
         <span className="font-mono font-semibold text-green-700">
@@ -92,7 +143,8 @@ export function EmployeeTable() {
       headerName: 'Hire Date',
       filter: 'agDateColumnFilter',
       floatingFilter: true,
-      width: 120,
+      width: 140,
+      minWidth: 140,
       valueFormatter: (params) => {
         if (!params.value) return '';
         return new Date(params.value).toLocaleDateString('en-US', {
@@ -107,7 +159,8 @@ export function EmployeeTable() {
       headerName: 'Age',
       filter: 'agNumberColumnFilter',
       floatingFilter: true,
-      width: 80,
+      width: 100,
+      minWidth: 100,
       cellRenderer: (params: { value: number }) => (
         <span className="text-center w-full block">{params.value}</span>
       ),
@@ -117,7 +170,8 @@ export function EmployeeTable() {
       headerName: 'Location',
       filter: 'agSetColumnFilter',
       floatingFilter: true,
-      width: 120,
+      width: 150,
+      minWidth: 150,
       cellRenderer: (params: { value: string }) => (
         <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
           📍 {params.value}
@@ -129,7 +183,8 @@ export function EmployeeTable() {
       headerName: 'Performance',
       filter: 'agNumberColumnFilter',
       floatingFilter: true,
-      width: 130,
+      width: 150,
+      minWidth: 150,
       valueFormatter: (params) => params.value?.toFixed(1),
       cellRenderer: (params: { value: number }) => {
         const rating = params.value;
@@ -154,7 +209,8 @@ export function EmployeeTable() {
       headerName: 'Projects',
       filter: 'agNumberColumnFilter',
       floatingFilter: true,
-      width: 100,
+      width: 120,
+      minWidth: 120,
       cellRenderer: (params: { value: number }) => (
         <div className="flex items-center justify-center">
           <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">
@@ -168,7 +224,7 @@ export function EmployeeTable() {
       headerName: 'Status',
       filter: 'agSetColumnFilter',
       floatingFilter: true,
-      width: 100,
+      width: 120,
       cellRenderer: (params: { value: boolean }) => (
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
           params.value
@@ -187,7 +243,7 @@ export function EmployeeTable() {
       headerName: 'Skills',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 250,
+      width: 300,
       cellRenderer: (params: { value: string[] }) => (
         <div className="flex flex-wrap gap-1 py-1">
           {params.value?.slice(0, 3).map((skill, index) => (
@@ -212,7 +268,7 @@ export function EmployeeTable() {
       headerName: 'Manager',
       filter: 'agTextColumnFilter',
       floatingFilter: true,
-      width: 150,
+      width: 180,
       valueFormatter: (params) => params.value || 'N/A',
       cellRenderer: (params: { value: string }) => (
         <span className={params.value ? 'text-gray-900' : 'text-gray-400 italic'}>
@@ -235,9 +291,10 @@ export function EmployeeTable() {
     },
   }), []);
 
-  const onGridReady = (params: GridReadyEvent) => {
-    params.api.sizeColumnsToFit();
-  };
+  // const onGridReady = (params: GridReadyEvent) => {
+  //   // Remove sizeColumnsToFit to maintain custom column widths
+  //   // params.api.sizeColumnsToFit();
+  // };
 
   const gridOptions = {
     headerHeight: 56,
@@ -250,6 +307,8 @@ export function EmployeeTable() {
     paginationPageSizeSelector: [10, 20, 50, 100],
     suppressRowClickSelection: true,
     rowSelection: 'multiple' as const,
+    paginationAutoPageSize: false,
+    suppressPaginationPanel: false,
     sideBar: {
       toolPanels: [
         {
@@ -282,16 +341,22 @@ export function EmployeeTable() {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
-      <div className="ag-theme-quartz h-[700px] w-full">
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          onGridReady={onGridReady}
-          {...gridOptions}
-        />
+    <>
+      <style>{customStyles}</style>
+      <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+        <div className="ag-theme-quartz h-[800px] w-full" style={{
+          '--ag-footer-height': '60px',
+          '--ag-pagination-height': '60px'
+        } as React.CSSProperties}>
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            // onGridReady={onGridReady}
+            {...gridOptions}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
-  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -37,20 +36,20 @@ const config = {
         system: ["system-ui", "sans-serif"],
       },
       colors: {
-        // Primary brand colors - Professional Blue
+        // Primary brand colors - Indigo
         primary: {
-          DEFAULT: "#3B82F6", // Blue 500
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1E40AF",
-          900: "#1E3A8A",
-          950: "#172554",
+          DEFAULT: "#6366F1", // Indigo 500
+          50: "#EEF2FF",
+          100: "#E0E7FF",
+          200: "#C7D2FE",
+          300: "#A5B4FC",
+          400: "#818CF8",
+          500: "#6366F1",
+          600: "#4F46E5",
+          700: "#4338CA",
+          800: "#3730A3",
+          900: "#312E81",
+          950: "#1E1B4B",
           foreground: "#FFFFFF",
         },
 
@@ -123,83 +122,43 @@ const config = {
         },
 
         // Background and foreground
-        background: {
-          DEFAULT: "#FFFFFF",
-          dark: "#0F172A",
-        },
-        foreground: {
-          DEFAULT: "#0F172A",
-          dark: "#F8FAFC",
-        },
+        background: "#FFFFFF",
+        foreground: "#0F172A",
 
         // Muted colors
         muted: {
           DEFAULT: "#F1F5F9", // Slate 100
-          dark: "#1E293B", // Slate 800
-          foreground: {
-            DEFAULT: "#64748B", // Slate 500
-            dark: "#94A3B8", // Slate 400
-          },
+          foreground: "#64748B", // Slate 500
         },
 
         // Accent colors
         accent: {
           DEFAULT: "#F1F5F9", // Slate 100
-          dark: "#1E293B", // Slate 800
-          foreground: {
-            DEFAULT: "#0F172A", // Slate 900
-            dark: "#F8FAFC", // Slate 50
-          },
+          foreground: "#0F172A", // Slate 900
         },
 
         // Card colors
         card: {
           DEFAULT: "#FFFFFF",
-          dark: "#1E293B",
-          foreground: {
-            DEFAULT: "#0F172A",
-            dark: "#F8FAFC",
-          },
+          foreground: "#0F172A",
         },
 
         // Popover colors
         popover: {
           DEFAULT: "#FFFFFF",
-          dark: "#1E293B",
-          foreground: {
-            DEFAULT: "#0F172A",
-            dark: "#F8FAFC",
-          },
+          foreground: "#0F172A",
         },
 
         // Border and input colors
-        border: {
-          DEFAULT: "#E2E8F0", // Slate 200
-          dark: "#334155", // Slate 700
-        },
-        input: {
-          DEFAULT: "#E2E8F0", // Slate 200
-          dark: "#334155", // Slate 700
-        },
-        ring: {
-          DEFAULT: "#3B82F6", // Blue 500
-          dark: "#60A5FA", // Blue 400
-        },
+        border: "#E2E8F0", // Slate 200
+        input: "#E2E8F0", // Slate 200
+        ring: "#6366F1", // Indigo 500
 
         // Sidebar specific colors
         sidebar: {
-          background: {
-            DEFAULT: "#FFFFFF",
-            dark: "#0F172A",
-          },
-          foreground: {
-            DEFAULT: "#0F172A",
-            dark: "#F8FAFC",
-          },
-          border: {
-            DEFAULT: "#E2E8F0",
-            dark: "#334155",
-          },
+          background: "#FFFFFF",
+          foreground: "#0F172A",
+          border: "#E2E8F0",
         },
       },
       borderRadius: {

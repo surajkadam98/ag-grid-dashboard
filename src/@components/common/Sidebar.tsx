@@ -1,11 +1,11 @@
-import { Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessui/react';
 import {
-  HomeIcon,
-  UserIcon,
-  XMarkIcon
-} from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle';
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  TransitionChild,
+} from "@headlessui/react";
+import { HomeIcon, UserIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -13,12 +13,12 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
-  { name: 'About', href: '/about', icon: UserIcon, current: false },
+  { name: "Dashboard", href: "/", icon: HomeIcon, current: false },
+  { name: "About", href: "/about", icon: UserIcon, current: false },
 ];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
@@ -27,7 +27,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>
       {/* Mobile sidebar */}
-      <Dialog open={isOpen} onClose={onClose} className="relative z-50 lg:hidden">
+      <Dialog
+        open={isOpen}
+        onClose={onClose}
+        className="relative z-50 lg:hidden"
+      >
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
@@ -40,7 +44,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           >
             <TransitionChild>
               <div className="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out data-[closed]:opacity-0">
-                <button type="button" onClick={onClose} className="-m-2.5 p-2.5">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="-m-2.5 p-2.5"
+                >
                   <span className="sr-only">Close sidebar</span>
                   <XMarkIcon aria-hidden="true" className="size-6 text-white" />
                 </button>
@@ -48,7 +56,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             </TransitionChild>
 
             {/* Sidebar component */}
-            <div className="flex grow flex-col overflow-y-auto bg-white px-6 py-8">
+            <div className="flex grow flex-col overflow-y-auto bg-background px-6 py-8">
               <div className="flex h-16 shrink-0 items-center mb-8">
                 <div className="flex items-center gap-3">
                   <img
@@ -56,7 +64,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     alt="Factwise Logo"
                     className="h-8 w-8 rounded"
                   />
-                  <span className="text-indigo-700 font-bold text-lg">Factwise</span>
+                  <span className="text-primary-700 font-bold text-lg">
+                    Factwise
+                  </span>
                 </div>
               </div>
               <nav className="flex flex-1 flex-col">
@@ -72,16 +82,18 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                               onClick={onClose}
                               className={classNames(
                                 isActive
-                                  ? 'bg-indigo-600 text-white'
-                                  : 'text-gray-700 hover:bg-gray-100',
-                                'group flex gap-x-3 rounded-lg px-3 py-2 text-sm font-medium',
+                                  ? "bg-primary-600 text-white"
+                                  : "text-gray-700 hover:bg-gray-100",
+                                "group flex gap-x-3 rounded-lg px-3 py-2 text-sm font-medium"
                               )}
                             >
                               <item.icon
                                 aria-hidden="true"
                                 className={classNames(
-                                  isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500',
-                                  'size-5 shrink-0',
+                                  isActive
+                                    ? "text-primary-foreground"
+                                    : "text-muted-foreground group-hover:text-foreground",
+                                  "size-5 shrink-0"
                                 )}
                               />
                               {item.name}
@@ -91,17 +103,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                       })}
                     </ul>
                   </li>
-
                 </ul>
               </nav>
 
-              {/* Mobile Theme Toggle */}
-              <div className="mt-auto space-y-3">
-                <div className="flex items-center justify-between px-3 py-2">
-                  <span className="text-sm font-medium text-gray-700">Theme</span>
-                  <ThemeToggle />
-                </div>
-              </div>
             </div>
           </DialogPanel>
         </div>
@@ -109,7 +113,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <div className="flex grow flex-col overflow-y-auto bg-white border-r border-gray-200 px-5 py-2 2xl:py-5">
+        <div className="flex grow flex-col overflow-y-auto bg-background border-r border-border px-5 py-2 2xl:py-5">
           <div className="flex h-16 shrink-0 items-center mb-8">
             <div className="flex items-center gap-3">
               <img
@@ -117,7 +121,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 alt="Factwise Logo"
                 className="h-8 w-8 rounded"
               />
-              <span className="text-indigo-700 font-bold text-lg">Factwise</span>
+               <span className="text-primary-700 font-bold text-lg">
+                 Factwise
+               </span>
             </div>
           </div>
           <nav className="flex flex-1 flex-col">
@@ -131,17 +137,19 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         <Link
                           to={item.href}
                           className={classNames(
-                            isActive
-                              ? 'bg-indigo-600 text-white'
-                              : 'text-gray-700 hover:bg-gray-100',
-                            'group flex gap-x-3 rounded-lg px-3 py-2 text-sm font-medium',
+                              isActive
+                                ? "bg-primary-600 text-white"
+                                : "text-gray-800  hover:bg-indigo-100 ",
+                            "group flex gap-x-3 rounded-lg px-3 py-2 text-sm font-medium"
                           )}
                         >
                           <item.icon
                             aria-hidden="true"
                             className={classNames(
-                              isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500',
-                              'size-5 shrink-0',
+                              isActive
+                                ? "text-primary-foreground"
+                                : "text-muted-foreground group-hover:text-foreground",
+                              "size-5 shrink-0"
                             )}
                           />
                           {item.name}
@@ -151,25 +159,21 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                   })}
                 </ul>
               </li>
-
-
             </ul>
-            </nav>
-            <div className="mt-auto space-y-3">
-
-              {/* User Profile */}
-              <div className="flex justify-between items-center gap-x-4 px-3 py-3 text-sm font-medium text-gray-700 rounded-lg cursor-pointer border-t border-gray-200 pt-3">
-               <div className='flex items-center gap-x-2'>
-               <img
+          </nav>
+          <div className="mt-auto space-y-3">
+            {/* User Profile */}
+            <div className="flex justify-between items-center gap-x-4 px-3 py-3 text-sm font-medium text-gray-900 cursor-pointer border-t border-gray-200 pt-3">
+              <div className="flex items-center gap-x-2">
+                <img
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="User avatar"
                   className="size-8 rounded-full"
                 />
                 <span>Suraj Kadam</span>
-               </div>
-                <ThemeToggle />
               </div>
             </div>
+          </div>
         </div>
       </div>
     </>

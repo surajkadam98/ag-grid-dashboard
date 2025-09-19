@@ -7,7 +7,7 @@ export function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="h-full bg-gray-50">
+    <div className="h-full bg-background">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <Header onMenuClick={() => setSidebarOpen(true)} isMenuOpen={sidebarOpen} />
 

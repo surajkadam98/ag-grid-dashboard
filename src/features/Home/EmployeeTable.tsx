@@ -108,7 +108,7 @@ export function EmployeeTable() {
       width: 180,
       minWidth: 180,
       cellRenderer: (params: { value: string }) => (
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
           {params.value}
         </span>
       ),
@@ -191,7 +191,7 @@ export function EmployeeTable() {
         let colorClass = 'bg-gray-100 text-gray-800';
 
         if (rating >= 4.5) colorClass = 'bg-green-100 text-green-800';
-        else if (rating >= 4.0) colorClass = 'bg-blue-100 text-blue-800';
+        else if (rating >= 4.0) colorClass = 'bg-primary-100 text-primary-800';
         else if (rating >= 3.5) colorClass = 'bg-yellow-100 text-yellow-800';
         else colorClass = 'bg-red-100 text-red-800';
 
@@ -225,6 +225,7 @@ export function EmployeeTable() {
       filter: 'agSetColumnFilter',
       floatingFilter: true,
       width: 120,
+      minWidth: 120,
       cellRenderer: (params: { value: boolean }) => (
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
           params.value
@@ -244,6 +245,7 @@ export function EmployeeTable() {
       filter: 'agTextColumnFilter',
       floatingFilter: true,
       width: 300,
+      minWidth: 300,
       cellRenderer: (params: { value: string[] }) => (
         <div className="flex flex-wrap gap-1 py-1">
           {params.value?.slice(0, 3).map((skill, index) => (
@@ -269,6 +271,7 @@ export function EmployeeTable() {
       filter: 'agTextColumnFilter',
       floatingFilter: true,
       width: 180,
+      minWidth: 180,
       valueFormatter: (params) => params.value || 'N/A',
       cellRenderer: (params: { value: string }) => (
         <span className={params.value ? 'text-gray-900' : 'text-gray-400 italic'}>

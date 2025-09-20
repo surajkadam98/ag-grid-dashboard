@@ -50,7 +50,7 @@ Here are some previews of the project:
 ```
 src/
 ├── @components/          # Reusable components
-│   ├── ui/              # shadcn/ui components
+│   ├── ui/              # /ui components
 │   └── common/          # Common shared components
 ├── @layouts/            # Page layouts
 ├── @types/              # TypeScript type definitions
